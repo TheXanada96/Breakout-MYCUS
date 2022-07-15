@@ -16,6 +16,13 @@ public class Gamemanager : MonoBehaviour {
     
 	
 	void Update () {
+
+		if(gameover && Input.GetMouseButtonDown(0))
+        {
+
+        }
+
+
 		if (!game_started && Input.GetMouseButtonDown(0))
 		{
 			pressStartpanel.SetActive(false);
@@ -28,5 +35,7 @@ public class Gamemanager : MonoBehaviour {
 	public void Gameover()
     {
 		gameOverpanel.SetActive(true);
-    }
+		gameNoobpanel.SetActive(true);
+
+	}
 }

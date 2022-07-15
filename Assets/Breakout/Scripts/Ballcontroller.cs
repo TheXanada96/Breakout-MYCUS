@@ -29,8 +29,11 @@ public class Ballcontroller : MonoBehaviour {
 		body.velocity = ball_speed * body.velocity.normalized;
 	}
 
-	private void OnTriggerEnter2D()
+	private void OnTriggerEnter2D(Collider2D collision)
     {
-	//	if(Collision.gameObject  ) 
+	if(collision.gameObject.tag == "death")
+        {
+			Gamemanager.gamemanager.Gameover();
+        }
     }
 }
