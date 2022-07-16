@@ -17,7 +17,7 @@ public class Ballcontroller : MonoBehaviour {
 
 
 	void Update () {
-		//Gamemanager.gamemanager.Gameover;
+		
 	}
 
 

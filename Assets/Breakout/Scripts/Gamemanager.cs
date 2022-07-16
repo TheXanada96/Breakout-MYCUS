@@ -14,6 +14,10 @@ public class Gamemanager : MonoBehaviour {
 		gamemanager = this;
     }
     
+	void Resetgamescene()
+    {
+
+    }
 	
 	void Update () {
 
