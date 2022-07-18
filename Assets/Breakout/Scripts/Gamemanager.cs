@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Gamemanager : MonoBehaviour {
 	public static Gamemanager gamemanager;
@@ -14,20 +15,22 @@ public class Gamemanager : MonoBehaviour {
 		gamemanager = this;
     }
     
-	void Resetgamescene()
+	void Start()
     {
-
+		Resetgamescene();
     }
 	
 	void Update () {
 
 		if(gameover && Input.GetMouseButtonDown(0))
         {
-
+			gameOverpanel.SetActive(false);
+			gameNoobpanel.SetActive(false);
+			Resetgamescene();
         }
 
 
-		if (!game_started && Input.GetMouseButtonDown(0))
+		else if (!game_started && Input.GetMouseButtonDown(0))
 		{
 			pressStartpanel.SetActive(false);
 			game_started = true;
@@ -36,8 +39,20 @@ public class Gamemanager : MonoBehaviour {
 		}
 	}
 
+	void Resetgamescene()
+	{
+		if(SceneManager.GetSceneByName("demo").name == "demo")
+        {
+			SceneManager.UnloadSceneAsync("demo");
+        }
+		SceneManager.LoadScene("demo", LoadSceneMode.Additive);
+		gameover = false;
+		game_started = false; 
+	}
+
 	public void Gameover()
     {
+		gameover = true;
 		gameOverpanel.SetActive(true);
 		gameNoobpanel.SetActive(true);
 

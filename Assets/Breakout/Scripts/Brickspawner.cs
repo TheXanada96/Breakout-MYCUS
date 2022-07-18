@@ -26,7 +26,7 @@ public class Brickspawner : MonoBehaviour {
             {
 				Vector2 newbrickposition = new Vector2(transform.position.x + (j * xdistantiate), transform.position.y +
 (i * ydistantiate));
-				GameObject.Instantiate(brickprefab, newbrickposition, Quaternion.identity);
+				GameObject.Instantiate(brickprefab, newbrickposition, Quaternion.identity, transform);
             }
         }
     }

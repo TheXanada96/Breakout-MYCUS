@@ -27,6 +27,7 @@ public class Brickmanager : MonoBehaviour {
 			Changecolorlife();
 			if (hitpoints <= 0)
 			{
+				Gamemanager.gamemanager.brickdestroyed();
 				Destroy(gameObject);
 			}
 		}
