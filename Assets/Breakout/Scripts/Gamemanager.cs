@@ -6,9 +6,16 @@ using UnityEngine.SceneManagement;
 public class Gamemanager : MonoBehaviour {
 	public static Gamemanager gamemanager;
 	[SerializeField] GameObject pressStartpanel, gameOverpanel, gameNoobpanel, gameWonpanel;
-	 Rigidbody2D ball;
+	Rigidbody2D ball;
 
 	bool game_started = false, gameover = false;
+
+	public int spawnedbricks = 0;
+
+	GameObject bar;
+
+	[SerializeField]
+	GameObject explosioneffect;
 
 	void Awake ()
     {
@@ -27,6 +34,7 @@ public class Gamemanager : MonoBehaviour {
 			gameOverpanel.SetActive(false);
 			gameNoobpanel.SetActive(false);
 			Resetgamescene();
+
         }
 
 
@@ -47,14 +55,45 @@ public class Gamemanager : MonoBehaviour {
         }
 		SceneManager.LoadScene("demo", LoadSceneMode.Additive);
 		gameover = false;
-		game_started = false; 
+		game_started = false;
+		pressStartpanel.SetActive(true);
+		spawnedbricks = 0; 
 	}
 
 	public void Gameover()
     {
+		if(bar == null)
+        {
+			bar = GameObject.FindGameObjectWithTag("bar");
+        }
+		GameObject.Instantiate(explosioneffect, bar.transform.position, Quaternion.identity, bar.transform);
+		bar.GetComponent<SpriteRenderer>().enabled = false;
 		gameover = true;
 		gameOverpanel.SetActive(true);
 		gameNoobpanel.SetActive(true);
 
+		
+
 	}
+
+	public void Gamewon()
+    {
+		Destroy(ball.gameObject);
+		gameWonpanel.SetActive(true);
+		gameover = true;
+    }
+
+	public void Setspawnedbricks(int value)
+    {
+		spawnedbricks = value;
+    }
+
+	public void brickdestroyed()
+    {
+		spawnedbricks--;
+		if(spawnedbricks<=0)
+        {
+			Gamewon();
+        }
+    }
 }

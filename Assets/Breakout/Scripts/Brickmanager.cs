@@ -8,10 +8,14 @@ public class Brickmanager : MonoBehaviour {
 
 	SpriteRenderer sprite;
 
+    
+	[SerializeField]
+	ParticleSystem brickhitparticles;
+
 	void Start () {
 		sprite = GetComponent<SpriteRenderer>();
 			Changecolorlife();
-		
+	
 	}
 	
 	
@@ -25,6 +29,15 @@ public class Brickmanager : MonoBehaviour {
         {
 			hitpoints--;
 			Changecolorlife();
+		
+			brickhitparticles.Play();
+			Vector3 collisionpoint = new Vector3(collision.contacts[0].point.x, collision.contacts[0].point.y);
+
+			Vector3 balldir = collision.gameObject.transform.position - collisionpoint;
+			brickhitparticles.transform.rotation = Quaternion.LookRotation(balldir, Vector3.back);
+
+			brickhitparticles.transform.position = collisionpoint;
+
 			if (hitpoints <= 0)
 			{
 				Gamemanager.gamemanager.brickdestroyed();
@@ -47,5 +60,7 @@ public class Brickmanager : MonoBehaviour {
 				break;
 
         }
-    }
+		ParticleSystem.MainModule particlemodule = brickhitparticles.main;
+		particlemodule.startColor = sprite.color;
+	}
 }

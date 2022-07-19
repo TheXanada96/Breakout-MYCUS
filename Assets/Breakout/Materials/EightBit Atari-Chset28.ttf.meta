@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: ae994f48bd135364e93f2804d524f7bc
+timeCreated: 1658227453
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: EightBit Atari
+  fontNames:
+  - EightBit Atari
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

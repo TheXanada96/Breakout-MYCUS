@@ -8,12 +8,18 @@ public class Ballcontroller : MonoBehaviour {
 
 	[SerializeField] float ball_speed = 10f;
 
+    [SerializeField]
+	AudioSource ballsound, deathsound;
 
 	void Start () {
 		body = GetComponent<Rigidbody2D>();
+		ballsound = GetComponent<AudioSource>();
 	}
 
-	
+	void OnCollisionEnter2D(Collision2D collision)
+    {
+		ballsound.Play();
+    }
 
 
 	void Update () {
@@ -34,6 +40,7 @@ public class Ballcontroller : MonoBehaviour {
 	if(collision.gameObject.tag == "death")
         {
 			Gamemanager.gamemanager.Gameover();
+			deathsound.Play();
         }
     }
 }
