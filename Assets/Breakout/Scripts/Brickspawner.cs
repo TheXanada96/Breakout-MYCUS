@@ -10,7 +10,7 @@ public class Brickspawner : MonoBehaviour {
 	[SerializeField] GameObject brickprefab;
 
 	void Start () {
-		Gamemanager.gamemanager.Setspawnedbricks(rows * cols);
+		Gamemanager.gamemanager.Setspawnedbricks(rows * cols); // fa spawnare i brick in colonna
 		Spawnbricks();
 	}
 	

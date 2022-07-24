@@ -13,6 +13,6 @@ public class Scoremanager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		GetComponent<Text>().text = score.ToString();
+		GetComponent<Text>().text = score.ToString(); // converte il valore dello score in testo
 	}
 }
