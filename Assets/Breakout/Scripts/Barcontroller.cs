@@ -8,9 +8,10 @@ public class Barcontroller : MonoBehaviour {
     [SerializeField] float movementspeed; // velocità di movimento
 
     [SerializeField] float minX = -2.2f, maxX = 2.2f;
-	
-	
-	
+
+	public float dragSpeed = 0.01f;
+	Vector3 lastMousePos;
+
 	void Update () {
        
 
@@ -40,5 +41,20 @@ public class Barcontroller : MonoBehaviour {
 			transform.position = new Vector2(maxX, transform.position.y);
 			// se il giocatore raggiunge la posizione X di 2.2f si ferma
 		} */
+	}
+
+	void OnMouseDown()
+	{
+		lastMousePos = Input.mousePosition;
+	}
+
+	void OnMouseDrag()
+		{
+		Vector3 delta = Input.mousePosition - lastMousePos;
+		Vector3 pos = transform.position;
+		pos.x += delta.x * dragSpeed;
+		pos.y = Mathf.Clamp(pos.y, minX, maxX);
+		transform.position = pos;
+		lastMousePos = Input.mousePosition;
 	}
 }
