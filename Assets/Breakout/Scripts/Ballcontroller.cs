@@ -19,7 +19,12 @@ public class Ballcontroller : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D collision)
     {
 		ballsound.Play();
-    }
+		if (collision.gameObject.tag == "brick") // se la palla colpisce un brick dà i punti
+        {
+			Scoremanager.score += 100;
+        }
+
+	}
 
 
 	void Update () {

@@ -47,7 +47,7 @@ public class Gamemanager : MonoBehaviour {
 		}
 	}
 
-	void Resetgamescene()
+	void Resetgamescene() // reset della scena
 	{
 		if(SceneManager.GetSceneByName("demo").name == "demo")
         {
@@ -57,7 +57,8 @@ public class Gamemanager : MonoBehaviour {
 		gameover = false;
 		game_started = false;
 		pressStartpanel.SetActive(true);
-		spawnedbricks = 0; 
+		spawnedbricks = 0;
+		Scoremanager.score = 0;
 	}
 
 	public void Gameover()
@@ -66,7 +67,8 @@ public class Gamemanager : MonoBehaviour {
         {
 			bar = GameObject.FindGameObjectWithTag("bar");
         }
-		GameObject.Instantiate(explosioneffect, bar.transform.position, Quaternion.identity, bar.transform);
+		GameObject.Instantiate(explosioneffect, bar.transform.position, Quaternion.identity, bar.transform); 
+		// se la palla tocca il tag "death" la barra esplode e il gioco va in gameover.
 		bar.GetComponent<SpriteRenderer>().enabled = false;
 		gameover = true;
 		gameOverpanel.SetActive(true);

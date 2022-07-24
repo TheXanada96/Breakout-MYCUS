@@ -53,7 +53,7 @@ public class Barcontroller : MonoBehaviour {
 		Vector3 delta = Input.mousePosition - lastMousePos;
 		Vector3 pos = transform.position;
 		pos.x += delta.x * dragSpeed;
-		pos.y = Mathf.Clamp(pos.y, minX, maxX);
+	
 		transform.position = pos;
 		lastMousePos = Input.mousePosition;
 	}
